@@ -1,0 +1,67 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Playfair Display', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+
+  /* Mocha / Coffee Theme */
+  --color-mocha-50: #fbf9f8;
+  --color-mocha-100: #f5f0ec;
+  --color-mocha-200: #e6dacd;
+  /* Based on A69080 */
+  --color-mocha-300: #d6c3b0;
+  /* Based on AC8968 */
+  --color-mocha-400: #c2a991;
+  /* Based on 93785B */
+  --color-mocha-500: #b08d6a;
+  /* Based on 865D36 */
+  --color-mocha-600: #9c7554;
+  --color-mocha-700: #886245;
+  --color-mocha-800: #6b4d35;
+  /* Based on 3e362e (darkened)*/
+  --color-mocha-900: #3e362e;
+  /* Actual 3e362e */
+  --color-mocha-950: #29231e;
+}
+
+:root {
+  --ui-primary: var(--color-mocha-400);
+  --ui-radius: var(--radius-xl);
+  /* slightly less rounded for a chic look */
+}
+
+body {
+  @apply bg-[#1A1613] text-mocha-100;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Page transitions */
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+/* Custom fade-in-up animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
