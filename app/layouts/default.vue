@@ -5,7 +5,7 @@
       <UContainer>
         <div class="flex items-center justify-between h-20 md:h-24">
           <NuxtLink to="/" class="transition-opacity hover:opacity-70">
-            <NuxtImg src="/logo.png" alt="Студия Анастасии Дзядук" width="112" height="112" format="webp" class="h-12 md:h-14 w-auto" />
+            <NuxtImg src="/logo.png" alt="Кабинет Анастасии Дзядук" width="112" height="112" format="webp" class="h-12 md:h-14 w-auto" />
           </NuxtLink>
           <div class="hidden md:flex items-center gap-8">
             <UNavigationMenu :items="links" class="text-sm tracking-wide uppercase text-mocha-200" />
@@ -57,7 +57,7 @@
           <!-- Brand -->
           <div>
             <NuxtLink to="/" class="transition-opacity hover:opacity-70 inline-block mb-4">
-              <NuxtImg src="/logo.png" alt="Студия Анастасии Дзядук" width="80" height="80" format="webp" class="h-10 w-auto" />
+              <NuxtImg src="/logo.png" alt="Кабинет Анастасии Дзядук" width="80" height="80" format="webp" class="h-10 w-auto" />
             </NuxtLink>
             <p class="text-mocha-400 text-sm font-light mb-2 leading-relaxed">Эстетика естественной красоты</p>
             <p class="text-mocha-600 text-xs font-light leading-relaxed">г. Сочи, ул. Макаренко, 30А<br />Ежедневно с 10:00 до 22:00</p>
@@ -95,7 +95,7 @@
 
         <div class="border-t border-mocha-800/50 mt-10 pt-8">
           <div class="text-mocha-600 text-xs font-light uppercase tracking-widest text-center">
-            © {{ new Date().getFullYear() }} Студия Анастасии Дзядук — Все права защищены
+            © {{ new Date().getFullYear() }} Кабинет Анастасии Дзядук — Все права защищены
           </div>
         </div>
       </UContainer>

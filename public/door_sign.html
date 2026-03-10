@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Макет вывески - Кабинет Анастасии Дзядук</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #e5e5e5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2, h3, p { margin: 0; }
+        .sign {
+            background-color: #F8F5F0; /* Light warm mocha-beige */
+            width: 100%;
+            max-width: 450px;
+            aspect-ratio: 3 / 4; /* Classic portrait rectangle format */
+            padding: 50px 40px;
+            box-shadow: 0 25px 50px -12px rgba(26, 22, 19, 0.25);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+            border-radius: 4px; /* Slight rounding */
+            border: 1px solid rgba(26, 22, 19, 0.1);
+            position: relative;
+        }
+        .logo-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .logo-container img {
+            width: 180px;
+            height: auto;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .text-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .title {
+            color: #1A1613; /* Dark warm mocha */
+            font-size: 1.125rem; /* 18px */
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+        .contact-box {
+            color: #1A1613;
+            margin-top: auto;
+        }
+        .name {
+            font-size: 0.8rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 12px;
+            opacity: 0.8;
+            color: #4A3B32;
+        }
+        .phone {
+            font-size: 1.35rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            color: #1A1613;
+        }
+        
+        /* Add some print/export styles */
+        @media print {
+            body { background-color: transparent; }
+            .sign { box-shadow: none; border: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="sign" id="sign">
+        <div class="logo-container">
+            <img src="/logo.png" alt="Логотип">
+        </div>
+        
+        <div class="text-content">
+            <div class="title">
+                Кабинет<br>массажа<br>и эстетики
+            </div>
+            
+            <div class="contact-box">
+                <div class="name">Мастер Анастасия</div>
+                <div class="phone">+7 (938) 488-03-07</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

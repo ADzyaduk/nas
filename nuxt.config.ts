@@ -34,7 +34,7 @@ export default defineNuxtConfig({
 
   site: {
     url: 'https://estive.ru',
-    name: 'Студия Анастасии Дзядук',
+    name: 'Кабинет Анастасии Дзядук',
     description: 'Массаж и эстетическая косметология в Сочи, ул. Макаренко 30А. Деликатные протоколы ухода и экспертный подход к естественной красоте.',
     defaultLocale: 'ru',
   },
@@ -59,7 +59,7 @@ export default defineNuxtConfig({
   schemaOrg: {
     identity: {
       type: 'LocalBusiness',
-      name: 'Студия Анастасии Дзядук',
+      name: 'Кабинет Анастасии Дзядук',
       description: 'Массаж и эстетическая косметология в Сочи, ул. Макаренко 30А',
       url: 'https://estive.ru',
       logo: '/logo.png',

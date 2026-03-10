@@ -10,7 +10,7 @@
           За каждой процедурой —<br /><i class="text-mocha-400">живой человек</i>
         </h1>
         <p class="text-lg text-mocha-300 font-light max-w-2xl mx-auto leading-relaxed" v-reveal="{ delay: 200 }">
-          В студии Анастасии Дзядук каждая процедура — это конкретная задача с конкретным результатом.
+          В кабинете Анастасии Дзядук каждая процедура — это конкретная задача с конкретным результатом.
           Говорю, что поможет, и не назначаю лишнего.
         </p>
       </UContainer>
@@ -43,7 +43,7 @@
 
             <div class="space-y-6 text-mocha-300 font-light leading-relaxed mb-12">
               <p>
-                Более 5 лет специализируюсь на ручных техниках массажа лица и эстетической косметологии.
+                Более 2 лет специализируюсь на ручных техниках массажа лица и эстетической косметологии.
                 Люблю работу, в которой виден результат: когда кожа становится живее, овал чётче, а клиент
                 уходит с желанием вернуться.
               </p>
@@ -56,8 +56,8 @@
             <!-- Stats -->
             <div class="flex items-stretch gap-3">
               <div class="flex-1 text-center bg-mocha-950/60 ring-1 ring-mocha-800/40 px-4 py-5">
-                <span class="text-3xl font-light text-mocha-100 font-serif block mb-1">5+</span>
-                <span class="text-xs uppercase tracking-widest text-mocha-500 font-light">Лет опыта</span>
+                <span class="text-3xl font-light text-mocha-100 font-serif block mb-1">2+</span>
+                <span class="text-xs uppercase tracking-widest text-mocha-500 font-light">Года опыта</span>
               </div>
               <div class="flex-1 text-center bg-mocha-950/60 ring-1 ring-mocha-800/40 px-4 py-5">
                 <span class="text-3xl font-light text-mocha-100 font-serif block mb-1">300+</span>
@@ -229,9 +229,9 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 useSeoMeta({
   title: 'О мастере',
-  description: 'Анастасия Дзядук — косметолог и массажист в Сочи, ул. Макаренко 30А. Опыт 5+ лет, сертифицированные техники, персональный подход.',
-  ogTitle: 'О мастере — Студия Анастасии Дзядук',
-  ogDescription: 'Мастер с 5+ годами опыта, сертифицированные техники и персональный подход к каждому клиенту.',
+  description: 'Анастасия Дзядук — косметолог и массажист в Сочи, ул. Макаренко 30А. Опыт 2+ года, сертифицированные техники, персональный подход.',
+  ogTitle: 'О мастере — Кабинет Анастасии Дзядук',
+  ogDescription: 'Мастер с 2+ годами опыта, сертифицированные техники и персональный подход к каждому клиенту.',
   keywords: 'мастер косметолог сочи, массаж сочи макаренко, сертификаты косметолог, массаж лица сочи мастер, косметолог сочи макаренко, кабинет массажа макаренко сочи',
 })
 
