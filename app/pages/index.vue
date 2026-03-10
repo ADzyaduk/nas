@@ -73,7 +73,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
           <NuxtLink v-for="(service, index) in popularServices" :key="service.title" to="/services" class="group cursor-pointer" v-reveal="{ delay: (index + 1) * 150 }">
             <div class="aspect-4/5 bg-mocha-900 mb-6 overflow-hidden relative">
-              <NuxtImg :src="service.image" :alt="service.title" loading="lazy" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw" quality="80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <img :src="service.image" :alt="service.title" loading="lazy" width="800" height="1000" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               <div class="absolute inset-0 bg-mocha-900/30 group-hover:bg-transparent transition-colors duration-500"></div>
             </div>
             <h3 class="text-lg font-medium text-mocha-100 mb-2 group-hover:text-mocha-200 transition-colors">{{ service.title }}</h3>
