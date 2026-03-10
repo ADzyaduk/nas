@@ -7,8 +7,17 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxt/image', '@nuxt/ui', '@nuxtjs/seo', '@nuxtjs/google-fonts'],
 
+  ui: {
+    fonts: false, // только Google Fonts, без @nuxt/fonts / Fontsource
+  },
+
   googleFonts: {
     display: 'swap',
+    families: {
+      Inter: [300, 400, 500, 600, 700],
+      'Playfair Display': [400, 500, 600, 700],
+    },
+    subsets: ['latin', 'cyrillic'],
   },
   css: ['~/assets/css/main.css'],
   colorMode: {
@@ -16,15 +25,10 @@ export default defineNuxtConfig({
     fallback: 'dark',
   },
 
-  runtimeConfig: {
-    telegramBotToken: '',
-    telegramChatId: '',
-  },
-
   site: {
-    url: 'https://nas-beauty.ru',
-    name: 'NAS Beauty Сочи',
-    description: 'Премиальный массаж лица и эстетическая косметология в Сочи. Деликатные протоколы ухода и экспертный подход к естественной красоте.',
+    url: 'https://estive.ru',
+    name: 'Студия Анастасии Дзядук',
+    description: 'Массаж и эстетическая косметология в Сочи, ул. Макаренко 30А. Деликатные протоколы ухода и экспертный подход к естественной красоте.',
     defaultLocale: 'ru',
   },
 
@@ -48,9 +52,9 @@ export default defineNuxtConfig({
   schemaOrg: {
     identity: {
       type: 'LocalBusiness',
-      name: 'NAS Beauty',
-      description: 'Премиальный массаж лица и эстетическая косметология в Сочи',
-      url: 'https://nas-beauty.ru',
+      name: 'Студия Анастасии Дзядук',
+      description: 'Массаж и эстетическая косметология в Сочи, ул. Макаренко 30А',
+      url: 'https://estive.ru',
       logo: '/logo.png',
       image: '/logo.png',
       address: {

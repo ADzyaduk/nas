@@ -1,5 +1,4 @@
 export default defineEventHandler(async (event) => {
-    const config = useRuntimeConfig()
     const body = await readBody(event)
 
     const { name, phone, service } = body
@@ -11,8 +10,8 @@ export default defineEventHandler(async (event) => {
         })
     }
 
-    const token = config.telegramBotToken
-    const chatId = config.telegramChatId
+    const token = process.env.NUXT_TELEGRAM_BOT_TOKEN
+    const chatId = process.env.NUXT_TELEGRAM_CHAT_ID
 
     if (!token || !chatId || token === 'your_bot_token_here') {
         throw createError({

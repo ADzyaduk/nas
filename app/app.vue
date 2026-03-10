@@ -10,8 +10,8 @@
 useHead({
   titleTemplate: (titleChunk) => {
     return titleChunk
-      ? `${titleChunk} — NAS Beauty Сочи`
-      : 'NAS Beauty — Массаж и косметология в Сочи'
+      ? `${titleChunk} — Студия Анастасии Дзядук`
+      : 'Студия Анастасии Дзядук — Массаж и косметология в Сочи'
   },
 })
 </script>

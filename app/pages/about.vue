@@ -10,7 +10,7 @@
           За каждой процедурой —<br /><i class="text-mocha-400">живой человек</i>
         </h1>
         <p class="text-lg text-mocha-300 font-light max-w-2xl mx-auto leading-relaxed" v-reveal="{ delay: 200 }">
-          В NAS Beauty каждая процедура — это конкретная задача с конкретным результатом.
+          В студии Анастасии Дзядук каждая процедура — это конкретная задача с конкретным результатом.
           Говорю, что поможет, и не назначаю лишнего.
         </p>
       </UContainer>
@@ -21,13 +21,16 @@
       <UContainer class="max-w-5xl">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
-          <!-- Photo placeholder -->
+          <!-- Master photo -->
           <div v-reveal>
             <div class="aspect-3/4 bg-mocha-900 overflow-hidden relative group">
-              <div class="absolute inset-0 flex flex-col items-center justify-center text-mocha-700 gap-4">
-                <UIcon name="i-lucide-user" class="w-16 h-16" />
-                <span class="text-xs uppercase tracking-widest font-medium">Фото мастера</span>
-              </div>
+              <NuxtImg
+                src="/img/master.webp"
+                alt="Анастасия Дзядук — косметолог и массажист в Сочи"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+                format="webp"
+              />
               <div class="absolute bottom-0 left-0 right-0 h-1/3 bg-linear-to-t from-mocha-950/60 to-transparent pointer-events-none"></div>
             </div>
           </div>
@@ -35,7 +38,7 @@
           <!-- Bio -->
           <div v-reveal="{ delay: 150 }">
             <span class="text-xs tracking-[0.2em] text-mocha-400 uppercase mb-6 block font-medium">Мастер</span>
-            <h2 class="text-3xl md:text-4xl font-normal text-mocha-100 font-serif mb-3">Анастасия</h2>
+            <h2 class="text-3xl md:text-4xl font-normal text-mocha-100 font-serif mb-3">Анастасия Дзядук</h2>
             <p class="text-mocha-400 text-sm uppercase tracking-widest mb-10 font-light">Косметолог · Массажист</p>
 
             <div class="space-y-6 text-mocha-300 font-light leading-relaxed mb-12">
@@ -125,54 +128,72 @@
           <div
             v-for="(cert, index) in certificates"
             :key="cert.title"
-            class="group cursor-default"
+            class="group cursor-pointer"
             v-reveal="{ delay: (index + 1) * 100 }"
+            @click="openCertificate(cert)"
           >
-            <div class="aspect-3/4 bg-mocha-900 overflow-hidden relative mb-4 ring-1 ring-mocha-800/40 group-hover:ring-mocha-600/60 transition-all duration-300">
-              <div class="absolute inset-0 flex flex-col items-center justify-center text-mocha-700 gap-3 group-hover:text-mocha-500 transition-colors duration-300">
-                <UIcon name="i-lucide-award" class="w-10 h-10" />
-                <span class="text-xs uppercase tracking-widest font-medium text-center px-4">Сертификат</span>
-              </div>
-              <div class="absolute inset-0 bg-mocha-900/50 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+            <div class="aspect-video bg-mocha-900 overflow-hidden relative mb-4 ring-1 ring-mocha-800/40 group-hover:ring-mocha-600/60 transition-all duration-300">
+              <NuxtImg
+                :src="cert.image"
+                :alt="cert.title"
+                class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                format="webp"
+              />
             </div>
-            <h3 class="text-sm font-medium text-mocha-200 leading-snug mb-1">{{ cert.title }}</h3>
-            <p class="text-xs text-mocha-500 font-light">{{ cert.year }}</p>
+            <h3 class="text-sm font-medium text-mocha-200 leading-snug">{{ cert.title }}</h3>
           </div>
         </div>
+
+        <!-- Certificate lightbox -->
+        <UModal
+          v-model:open="isCertOpen"
+          :ui="{
+            overlay: 'bg-mocha-950/80 backdrop-blur-sm',
+            content: 'bg-[#1A1613] ring-1 ring-mocha-800/50 rounded-none shadow-2xl max-w-2xl',
+            header: 'border-b border-mocha-800/50 px-6 pt-6 pb-4',
+            body: 'p-0',
+          }"
+        >
+          <template #header>
+            <div class="text-center w-full">
+              <h3 class="text-lg font-serif text-mocha-100">{{ selectedCert?.title }}</h3>
+            </div>
+          </template>
+          <template #body>
+            <NuxtImg
+              v-if="selectedCert"
+              :src="selectedCert.image"
+              :alt="selectedCert.title"
+              class="w-full h-auto"
+              format="webp"
+            />
+          </template>
+        </UModal>
       </UContainer>
     </section>
 
-    <!-- Studio Photos Section -->
+    <!-- Studio Section -->
     <section class="py-16 md:py-24 border-t border-mocha-800/50 bg-mocha-950/30">
       <UContainer class="max-w-5xl">
         <div class="text-center mb-16" v-reveal>
           <span class="text-xs tracking-[0.2em] text-mocha-400 uppercase mb-4 block font-medium">Пространство</span>
-          <h2 class="text-3xl md:text-4xl font-normal text-mocha-100 font-serif">Студия</h2>
+          <h2 class="text-3xl md:text-4xl font-normal text-mocha-100 font-serif">Кабинет</h2>
         </div>
 
-        <div class="grid grid-cols-3 gap-4 md:gap-6">
-          <!-- First photo: full width -->
-          <div class="col-span-3" v-reveal="{ delay: 0 }">
-            <div class="aspect-video bg-mocha-900 overflow-hidden relative group">
-              <div class="absolute inset-0 flex flex-col items-center justify-center text-mocha-700 gap-3 group-hover:text-mocha-500 transition-colors duration-300">
-                <UIcon name="i-lucide-image" class="w-10 h-10" />
-                <span class="text-xs uppercase tracking-widest font-medium">{{ studioPhotos[0].label }}</span>
-              </div>
-            </div>
-          </div>
-          <!-- Remaining 3 photos: equal columns -->
-          <div
-            v-for="(photo, index) in studioPhotos.slice(1)"
-            :key="photo.label"
-            class="col-span-1"
-            v-reveal="{ delay: (index + 1) * 120 }"
-          >
-            <div class="aspect-square bg-mocha-900 overflow-hidden relative group">
-              <div class="absolute inset-0 flex flex-col items-center justify-center text-mocha-700 gap-2 group-hover:text-mocha-500 transition-colors duration-300">
-                <UIcon name="i-lucide-image" class="w-7 h-7" />
-                <span class="text-xs uppercase tracking-widest font-medium">{{ photo.label }}</span>
-              </div>
-            </div>
+        <div class="max-w-md mx-auto" v-reveal="{ delay: 0 }">
+          <div class="aspect-9/16 bg-mocha-900 overflow-hidden relative">
+            <video
+              ref="studioVideoRef"
+              class="w-full h-full object-cover"
+              preload="metadata"
+              muted
+              loop
+              playsinline
+              poster="/img/kabinet/kabinet.webp"
+            >
+              <source src="/img/kabinet/video-2.mp4" type="video/mp4" />
+            </video>
           </div>
         </div>
       </UContainer>
@@ -204,27 +225,91 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+
 useSeoMeta({
   title: 'О мастере',
-  description: 'Познакомьтесь с мастером NAS Beauty: опыт, подход, сертификаты и философия работы. Честная косметология и массаж в Сочи.',
-  ogTitle: 'О мастере — NAS Beauty Сочи',
+  description: 'Анастасия Дзядук — косметолог и массажист в Сочи, ул. Макаренко 30А. Опыт 5+ лет, сертифицированные техники, персональный подход.',
+  ogTitle: 'О мастере — Студия Анастасии Дзядук',
   ogDescription: 'Мастер с 5+ годами опыта, сертифицированные техники и персональный подход к каждому клиенту.',
-  keywords: 'NAS Beauty о нас, мастер косметолог сочи, сертификаты косметолог, массаж лица сочи мастер',
+  keywords: 'мастер косметолог сочи, массаж сочи макаренко, сертификаты косметолог, массаж лица сочи мастер, косметолог сочи макаренко, кабинет массажа макаренко сочи',
 })
 
 const certificates = [
-  { title: 'Системный массаж лица', year: '2023' },
-  { title: 'Миофасциальные техники', year: '2023' },
-  { title: 'Эстетическая косметология', year: '2022' },
-  { title: 'Пилинги LeviSsimo', year: '2024' },
-  { title: 'Безынъекционная карбокситерапия', year: '2024' },
-  { title: 'Микронидлинг', year: '2024' },
+  {
+    title: 'Курс «Косметик-эстетист»',
+    year: '2024',
+    image: '/img/edu/cert-1.webp',
+  },
+  {
+    title: 'Курс «Классический оздоровительный массаж»',
+    year: '2025',
+    image: '/img/edu/cert-2.webp',
+  },
+  {
+    title: 'Курс «Эстет-мастер по лицу. Вторая ступень»',
+    year: '2026',
+    image: '/img/edu/cert-3.webp',
+  },
+  {
+    title: 'Моделирующий, слим- и лифтинг-массаж, ручной антицеллюлитный массаж',
+    year: '2025',
+    image: '/img/edu/cert-4.webp',
+  },
+  {
+    title: 'Клиническая кинезиология и точечный кинезио-массаж',
+    year: '2024',
+    image: '/img/edu/cert-5.webp',
+  },
+  {
+    title: 'Майский марафон 2025: фейс-архитектура и висцеральные техники',
+    year: '2025',
+    image: '/img/edu/cert-6.webp',
+  },
+  {
+    title: 'Диплом: классический оздоровительный массаж',
+    year: '2025',
+    image: '/img/edu/cert-7.webp',
+  },
+  {
+    title: 'Диплом: эстет-мастер по лицу. Вторая ступень',
+    year: '2026',
+    image: '/img/edu/cert-8.webp',
+  },
+  {
+    title: 'Диплом: косметик-эстетист',
+    year: '2024',
+    image: '/img/edu/cert-9.webp',
+  },
 ]
 
-const studioPhotos = [
-  { label: 'Кабинет' },
-  { label: 'Рабочее место' },
-  { label: 'Атмосфера' },
-  { label: 'Детали' },
-]
+const isCertOpen = ref(false)
+const selectedCert = ref<typeof certificates[0] | null>(null)
+
+function openCertificate(cert: typeof certificates[0]) {
+  selectedCert.value = cert
+  isCertOpen.value = true
+}
+
+const studioVideoRef = ref<HTMLVideoElement | null>(null)
+let videoObserver: IntersectionObserver | null = null
+
+onMounted(() => {
+  if (!studioVideoRef.value) return
+  videoObserver = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        studioVideoRef.value?.play()
+      } else {
+        studioVideoRef.value?.pause()
+      }
+    },
+    { threshold: 0.3 },
+  )
+  videoObserver.observe(studioVideoRef.value)
+})
+
+onBeforeUnmount(() => {
+  videoObserver?.disconnect()
+})
 </script>

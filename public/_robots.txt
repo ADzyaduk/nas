@@ -1,4 +1,4 @@
 User-Agent: *
 Allow: /
 
-Sitemap: https://nas-beauty.ru/sitemap.xml
+Sitemap: https://estive.ru/sitemap.xml
