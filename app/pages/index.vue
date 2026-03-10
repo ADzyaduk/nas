@@ -2,8 +2,7 @@
   <div class="grow flex flex-col">
     <!-- Hero Section -->
     <section class="relative overflow-hidden">
-      <div class="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat pointer-events-none" style="background-image: url('/img/hero_bg.webp')"></div>
-      <div class="absolute inset-0 -z-10 bg-transparent pointer-events-none" aria-hidden="true"></div>
+      <img src="/img/hero_bg.webp" alt="" fetchpriority="high" width="1920" height="1080" class="absolute inset-0 -z-10 w-full h-full object-cover pointer-events-none" />
       <div class="absolute inset-0 -z-10 bg-linear-to-b from-mocha-950/80 to-mocha-950/40 pointer-events-none" aria-hidden="true"></div>
 
       <UContainer class="py-24 sm:py-32 lg:py-48 mx-auto max-w-5xl text-center">
@@ -74,7 +73,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
           <NuxtLink v-for="(service, index) in popularServices" :key="service.title" to="/services" class="group cursor-pointer" v-reveal="{ delay: (index + 1) * 150 }">
             <div class="aspect-4/5 bg-mocha-900 mb-6 overflow-hidden relative">
-              <img :src="service.image" :alt="service.title" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <NuxtImg :src="service.image" :alt="service.title" loading="lazy" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw" quality="80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               <div class="absolute inset-0 bg-mocha-900/30 group-hover:bg-transparent transition-colors duration-500"></div>
             </div>
             <h3 class="text-lg font-medium text-mocha-100 mb-2 group-hover:text-mocha-200 transition-colors">{{ service.title }}</h3>
@@ -125,7 +124,12 @@
 </template>
 
 <script setup>
-useHead({ titleTemplate: '' })
+useHead({
+  titleTemplate: '',
+  link: [
+    { rel: 'preload', as: 'image', href: '/img/hero_bg.webp', fetchpriority: 'high' },
+  ],
+})
 
 useSeoMeta({
   title: 'Студия Анастасии Дзядук — Массаж и косметология в Сочи',

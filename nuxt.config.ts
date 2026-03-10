@@ -13,11 +13,18 @@ export default defineNuxtConfig({
 
   googleFonts: {
     display: 'swap',
+    download: true,
+    preload: true,
     families: {
-      Inter: [300, 400, 500, 600, 700],
-      'Playfair Display': [400, 500, 600, 700],
+      Inter: [300, 400, 500, 600],
+      'Playfair Display': [400, 600],
     },
     subsets: ['latin', 'cyrillic'],
+  },
+
+  image: {
+    quality: 80,
+    format: ['webp'],
   },
   css: ['~/assets/css/main.css'],
   colorMode: {
@@ -82,6 +89,18 @@ export default defineNuxtConfig({
         'https://www.instagram.com/massaz_sochi_',
         'https://t.me/stasya_girl_22',
       ],
+    },
+  },
+
+  // @ts-expect-error Nuxt 4 types lag behind — nitro is valid
+  nitro: {
+    compressPublicAssets: true,
+    routeRules: {
+      '/_nuxt/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
+      '/img/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
+      '/logo.png': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
+      '/favicon.ico': { headers: { 'cache-control': 'public, max-age=86400' } },
+      '/apple-touch-icon.png': { headers: { 'cache-control': 'public, max-age=86400' } },
     },
   },
 
