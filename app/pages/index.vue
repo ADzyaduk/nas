@@ -2,7 +2,7 @@
   <div class="grow flex flex-col">
     <!-- Hero Section -->
     <section class="relative overflow-hidden">
-      <div class="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat pointer-events-none" style="background-image: url('/img/hero_bg.png')"></div>
+      <div class="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat pointer-events-none" style="background-image: url('/img/hero_bg.webp')"></div>
       <div class="absolute inset-0 -z-10 bg-transparent pointer-events-none" aria-hidden="true"></div>
       <div class="absolute inset-0 -z-10 bg-linear-to-b from-mocha-950/80 to-mocha-950/40 pointer-events-none" aria-hidden="true"></div>
 
@@ -136,9 +136,9 @@ useSeoMeta({
 })
 
 const popularServices = [
-  { title: 'Системный массаж лица', price: '2 200', time: '60', image: '/img/face_massage.jpg' },
-  { title: 'Комбинированная чистка', price: '2 500', time: '120', image: '/img/4istka.png' },
-  { title: 'Массаж лица + маска', price: '2 700', time: '60+15', image: '/img/maska.jpg' },
-  { title: 'Пилинг LeviSsimo', price: '2 000', time: '30', image: '/img/pilling.jpg' },
+  { title: 'Системный массаж лица', price: '2 200', time: '60', image: '/img/face_massage.webp' },
+  { title: 'Комбинированная чистка', price: '2 500', time: '120', image: '/img/4istka.webp' },
+  { title: 'Массаж лица + маска', price: '2 700', time: '60+15', image: '/img/maska.webp' },
+  { title: 'Пилинг LeviSsimo', price: '2 000', time: '30', image: '/img/pilling.webp' },
 ]
 </script>
