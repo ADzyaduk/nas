@@ -6,7 +6,7 @@
       <div class="absolute inset-0 -z-10 bg-linear-to-b from-mocha-950/80 to-mocha-950/40 pointer-events-none" aria-hidden="true"></div>
 
       <UContainer class="py-24 sm:py-32 lg:py-48 mx-auto max-w-5xl text-center">
-        <span class="text-xs tracking-[0.2em] text-mocha-400 uppercase mb-5 block font-medium" v-reveal>Beauty & Spa Clinic</span>
+        <span class="text-xs tracking-[0.2em] text-mocha-400 uppercase mb-5 block font-medium" v-reveal>Beauty &amp; Spa</span>
         <div class="w-12 h-px bg-mocha-700 mx-auto mb-8" v-reveal="{ delay: 50 }" aria-hidden="true"></div>
         <h1 class="text-5xl md:text-7xl font-normal tracking-tight text-mocha-100 mb-8 font-serif leading-tight" v-reveal="{ delay: 100 }">
           Искусство<br/><i class="text-mocha-400">естественной</i> красоты
