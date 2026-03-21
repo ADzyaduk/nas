@@ -49,6 +49,9 @@
       <slot />
     </main>
 
+    <!-- Cookie Banner -->
+    <CookieBanner />
+
     <!-- Footer -->
     <footer class="bg-[#1A1613] border-t border-mocha-800/50 mt-auto transition-colors duration-500">
       <UContainer class="py-12 md:py-16">
@@ -93,10 +96,13 @@
           </div>
         </div>
 
-        <div class="border-t border-mocha-800/50 mt-10 pt-8">
-          <div class="text-mocha-600 text-xs font-light uppercase tracking-widest text-center">
-            © {{ new Date().getFullYear() }} Кабинет Анастасии Дзядук — Все права защищены
+        <div class="border-t border-mocha-800/50 mt-10 pt-8 flex flex-wrap justify-between items-center gap-4">
+          <div class="text-mocha-600 text-xs font-light uppercase tracking-widest">
+            © {{ new Date().getFullYear() }} Кабинет Анастасии Дзядук
           </div>
+          <NuxtLink to="/privacy" class="text-mocha-600 hover:text-mocha-400 text-xs font-light transition-colors tracking-wide">
+            Политика конфиденциальности
+          </NuxtLink>
         </div>
       </UContainer>
     </footer>

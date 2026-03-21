@@ -125,21 +125,30 @@
               />
             </UFormField>
 
+            <UFormField name="consent">
+              <UCheckbox v-model="state.consent" name="consent">
+                <template #label>
+                  <span class="text-xs text-mocha-500 font-light leading-relaxed">
+                    Я даю согласие на обработку персональных данных в соответствии с
+                    <NuxtLink to="/privacy" class="text-mocha-300 underline underline-offset-2 hover:text-mocha-100 transition-colors">
+                      Политикой конфиденциальности
+                    </NuxtLink>
+                  </span>
+                </template>
+              </UCheckbox>
+            </UFormField>
+
             <UButton
               type="submit"
               color="primary"
               variant="solid"
               block
               size="xl"
-              class="mt-8 rounded-none py-4 uppercase tracking-widest text-sm font-medium bg-mocha-200 text-mocha-950 hover:bg-mocha-100 transition-colors"
+              class="mt-2 rounded-none py-4 uppercase tracking-widest text-sm font-medium bg-mocha-200 text-mocha-950 hover:bg-mocha-100 transition-colors"
               :loading="isSubmitting"
             >
               Отправить
             </UButton>
-
-            <p class="text-xs text-center text-mocha-600 mt-6 font-light leading-relaxed">
-              Нажимая «Отправить», вы соглашаетесь с обработкой персональных данных.
-            </p>
           </UForm>
         </div>
 
@@ -166,10 +175,11 @@ const validate = (state: typeof stateObj) => {
   if (!state.name) errors.push({ name: 'name', message: 'Обязательное поле' })
   if (!state.phone) errors.push({ name: 'phone', message: 'Обязательное поле' })
   else if (!/^\+?[0-9\s\-()]+$/.test(state.phone)) errors.push({ name: 'phone', message: 'Некорректный формат' })
+  if (!state.consent) errors.push({ name: 'consent', message: 'Необходимо согласие на обработку данных' })
   return errors
 }
 
-const stateObj = { name: '', phone: '', service: '' }
+const stateObj = { name: '', phone: '', service: '', consent: false }
 const state = reactive({ ...stateObj })
 const isSubmitting = ref(false)
 
@@ -196,6 +206,7 @@ async function onSubmit() {
     state.name = ''
     state.phone = ''
     state.service = ''
+    state.consent = false
   } catch {
     toast.add({
       title: 'Ошибка отправки',
