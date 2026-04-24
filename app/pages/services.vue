@@ -6,11 +6,27 @@
       <div class="text-center mb-16">
         <span class="text-xs tracking-[0.2em] text-mocha-400 uppercase mb-6 block font-medium">Процедуры</span>
         <h1 class="text-4xl md:text-5xl font-normal tracking-tight text-mocha-100 font-serif mb-6">
-          Меню услуг
+          Меню процедур
         </h1>
         <p class="text-lg text-mocha-300 font-light max-w-xl mx-auto leading-relaxed">
-          Каждая процедура — конкретная задача и результат. Нажмите на любую — расскажем подробнее.
+          16 процедур в трёх направлениях. Если не знаете, с чего начать — напишите, разберёмся вместе.
         </p>
+      </div>
+
+      <!-- С чего начать -->
+      <div class="mb-20 p-8 md:p-10 bg-mocha-950/50 border border-mocha-800/40">
+        <h2 class="text-xs tracking-[0.2em] text-mocha-400 uppercase mb-8 font-medium">С чего начать</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div
+            v-for="starter in starters"
+            :key="starter.query"
+            class="group flex flex-col gap-1 p-4 border border-mocha-800/40 hover:border-mocha-600/60 hover:bg-mocha-900/30 transition-all duration-200 cursor-pointer"
+            @click="scrollToService(starter.anchor)"
+          >
+            <span class="text-mocha-400 text-xs font-light leading-relaxed uppercase tracking-wide">{{ starter.query }}</span>
+            <span class="text-mocha-200 text-sm font-medium group-hover:text-mocha-100 transition-colors">{{ starter.recommendation }}</span>
+          </div>
+        </div>
       </div>
 
       <!-- Category Navigation -->
@@ -43,6 +59,7 @@
           <h2 class="text-2xl font-serif text-mocha-100">{{ category.name }}</h2>
           <span class="ml-auto text-mocha-500 text-sm italic font-serif">от {{ category.minPrice }} ₽</span>
         </div>
+        <p class="text-mocha-500 text-sm font-light leading-relaxed italic mb-8">{{ category.intro }}</p>
 
         <!-- Service Rows -->
         <div>
@@ -84,6 +101,97 @@
           </div>
         </div>
       </div>
+
+      <!-- Packages: Дешевле курсом -->
+      <div class="mt-24 pt-24 border-t border-mocha-800/50">
+        <div class="text-center mb-12">
+          <span class="text-xs tracking-[0.2em] text-mocha-400 uppercase mb-4 block font-medium">Экономия</span>
+          <h2 class="text-3xl md:text-4xl font-normal text-mocha-100 font-serif mb-4">Дешевле курсом</h2>
+          <p class="text-mocha-400 font-light text-sm max-w-lg mx-auto leading-relaxed">
+            Пакет — не подписка. Купите и приходите в удобном ритме в течение двух месяцев.
+            Если не подошло после первой процедуры — верну остаток.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div
+            v-for="pkg in packages"
+            :key="pkg.name"
+            class="border border-mocha-800/50 bg-mocha-950/30 p-8 flex flex-col"
+          >
+            <h3 class="text-lg font-serif text-mocha-100 mb-2">{{ pkg.name }}</h3>
+            <p class="text-mocha-500 text-sm font-light leading-relaxed mb-8 grow">{{ pkg.composition }}</p>
+            <div>
+              <div class="flex items-baseline gap-3 mb-1">
+                <span class="text-2xl font-light text-mocha-100">{{ pkg.priceWith }} ₽</span>
+                <span class="text-mocha-600 text-sm line-through font-light">{{ pkg.priceWithout }} ₽</span>
+              </div>
+              <span class="text-mocha-500 text-xs uppercase tracking-widest">Экономия {{ pkg.saving }} ₽</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-10">
+          <NuxtLink
+            to="/contacts"
+            class="inline-flex items-center gap-2 text-xs tracking-widest uppercase text-mocha-300 hover:text-mocha-100 transition-colors"
+          >
+            Уточнить пакет у Анастасии
+            <UIcon name="i-lucide-arrow-right" class="w-3.5 h-3.5" />
+          </NuxtLink>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="mt-24 pt-24 border-t border-mocha-800/50">
+        <div class="text-center mb-12">
+          <span class="text-xs tracking-[0.2em] text-mocha-400 uppercase mb-4 block font-medium">Вопросы</span>
+          <h2 class="text-3xl md:text-4xl font-normal text-mocha-100 font-serif">Частые вопросы</h2>
+        </div>
+
+        <div class="space-y-px">
+          <div
+            v-for="(faq, i) in faqItems"
+            :key="i"
+            class="border border-mocha-800/40"
+          >
+            <button
+              class="w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:bg-mocha-950/40 transition-colors duration-200"
+              @click="toggleFaq(i)"
+            >
+              <span class="text-mocha-100 text-sm font-medium leading-relaxed">{{ faq.question }}</span>
+              <UIcon
+                :name="openFaq === i ? 'i-lucide-minus' : 'i-lucide-plus'"
+                class="w-4 h-4 shrink-0 text-mocha-500"
+              />
+            </button>
+            <div v-show="openFaq === i" class="px-6 pb-6">
+              <p class="text-mocha-400 text-sm font-light leading-relaxed">{{ faq.answer }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA under FAQ -->
+        <div class="mt-16 text-center">
+          <p class="text-mocha-500 text-sm font-light mb-6">Не нашли ответ на свой вопрос?</p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="tel:+79384880307"
+              class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-mocha-200 text-mocha-950 hover:bg-mocha-100 transition-colors text-xs tracking-widest uppercase font-medium w-full sm:w-auto"
+            >
+              <UIcon name="i-lucide-phone" class="w-3.5 h-3.5" />
+              Позвонить
+            </a>
+            <NuxtLink
+              to="/contacts"
+              class="inline-flex items-center justify-center px-8 py-3 border border-mocha-700 text-mocha-300 hover:border-mocha-500 hover:text-mocha-100 transition-colors text-xs tracking-widest uppercase font-medium w-full sm:w-auto"
+            >
+              Оставить заявку
+            </NuxtLink>
+          </div>
+        </div>
+      </div>
+
     </UContainer>
 
     <!-- Mobile: Drawer снизу -->
@@ -178,11 +286,11 @@ import { ref } from 'vue'
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 
 useSeoMeta({
-  title: 'Услуги и цены',
-  description: 'Прайс кабинета Анастасии Дзядук: массаж тела и лица, чистки, пилинги, карбокситерапия и микронидлинг. Сочи, ул. Макаренко 30А.',
+  title: 'Услуги и цены — массаж, чистки, карбокситерапия в Сочи',
+  description: '16 процедур: массаж лица и тела, чистки, пилинги LeviSsimo, карбокситерапия, микронидлинг. Цены от 500 ₽. Макаренко 30А, ежедневно 10:00–22:00.',
   ogTitle: 'Услуги и цены — Кабинет Анастасии Дзядук',
-  ogDescription: 'Массаж и эстетическая косметология в Сочи: подробное меню процедур, длительность и стоимость.',
-  keywords: 'массаж цены сочи, прайс массаж сочи, массаж сочи макаренко, стоимость массажа сочи, чистка лица цена сочи, пилинг цена сочи',
+  ogDescription: 'Массаж и эстетическая косметология в Сочи: 16 процедур, цены от 500 ₽. Макаренко 30А, ежедневно.',
+  keywords: 'массаж цены сочи, прайс массаж сочи, массаж сочи макаренко, стоимость массажа сочи, чистка лица цена сочи, пилинг цена сочи, карбокситерапия сочи, микронидлинг сочи',
 })
 
 const breakpoints = useBreakpoints(breakpointsTailwind)
@@ -190,17 +298,110 @@ const isMobile = breakpoints.smaller('md')
 
 const isDetailOpen = ref(false)
 const selectedService = ref<typeof serviceCategories[0]['items'][0] | null>(null)
+const openFaq = ref<number | null>(null)
 
 function openDetail(service: typeof serviceCategories[0]['items'][0]) {
   selectedService.value = service
   isDetailOpen.value = true
 }
 
+function toggleFaq(index: number) {
+  openFaq.value = openFaq.value === index ? null : index
+}
+
+function scrollToService(anchor: string) {
+  const el = document.getElementById(anchor)
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
+
+const starters = [
+  {
+    query: 'Хочу вернуть лицу свежесть за один визит',
+    recommendation: 'Системный массаж лица — 2 200 ₽, 60 мин',
+    anchor: 'massage-face',
+  },
+  {
+    query: 'Готовлюсь к событию, хочу выглядеть лучше',
+    recommendation: 'Массаж лица + маска — 2 700 ₽, 75 мин',
+    anchor: 'massage-face',
+  },
+  {
+    query: 'Нужно разобраться с кожей: поры, жирность',
+    recommendation: 'Комбинированная чистка — 2 500 ₽, 120 мин',
+    anchor: 'cosmetology',
+  },
+  {
+    query: 'Хочу сбросить усталость всего тела',
+    recommendation: 'Общий массаж тела — 3 500 ₽, 90 мин',
+    anchor: 'massage-body',
+  },
+]
+
+const packages = [
+  {
+    name: 'Лицо в форме',
+    composition: '5 × системный массаж лица — курсом. Овал закрепляется к третьей процедуре.',
+    priceWith: '10 000',
+    priceWithout: '11 000',
+    saving: '1 000',
+  },
+  {
+    name: 'Чистая кожа',
+    composition: 'Чистка + 2 пилинга LeviSsimo. Текстура выравнивается, поры сужаются.',
+    priceWith: '6 000',
+    priceWithout: '6 500',
+    saving: '500',
+  },
+  {
+    name: 'Перезагрузка тела',
+    composition: '5 × общий массаж тела (60 мин). Тело привыкает к лёгкости и перестаёт напрягаться.',
+    priceWith: '12 000',
+    priceWithout: '12 500',
+    saving: '500',
+  },
+]
+
+const faqItems = [
+  {
+    question: 'Сколько держится результат одной процедуры?',
+    answer: 'Зависит от процедуры. Массаж лица — эффект заметен 5–10 дней, с каждым следующим сеансом держится дольше. Чистка — кожа остаётся чистой 3–4 недели. Карбокситерапия — ощущение упругости 2–3 недели. Чем регулярнее приходите, тем дольше живёт эффект.',
+  },
+  {
+    question: 'Больно ли во время массажа лица, чистки или микронидлинга?',
+    answer: 'Массаж лица — нет, ощущения приятные. Механическая чистка может быть чувствительной в зоне плотных загрязнений — работаю аккуратно, стараюсь минимизировать дискомфорт. Микронидлинг — лёгкое ощущение покалывания, не сильнее. Если в процессе что-то не так — просто скажите, перестрою.',
+  },
+  {
+    question: 'Что если у меня чувствительная кожа?',
+    answer: 'Скажите об этом при записи или перед сеансом. Для чувствительной кожи подбираем мягкие форматы: классический массаж лица, ультразвуковую чистку, безынъекционную карбокситерапию. Агрессивные составы не использую — только если кожа сама этого просит.',
+  },
+  {
+    question: 'Можно ли прийти после перелёта, моря или загара?',
+    answer: 'После перелёта — да, даже хорошо: массаж лица убирает отёчность и усталость. После интенсивного загара — подождите 2–3 дня, загорелая кожа более чувствительная. После моря — всё нормально. Если сомневаетесь — напишите, уточним.',
+  },
+  {
+    question: 'Что делать после процедуры дома?',
+    answer: 'После каждого сеанса даю короткую инструкцию: что наносить, чего избегать 1–3 дня (тепло, активные кислоты, солнце). Всё индивидуально — зависит от того, что делали. Голосовое или сообщение в Telegram — сразу после визита.',
+  },
+  {
+    question: 'Как часто приходить — и обязательно ли курсом?',
+    answer: 'Нет, курс не обязателен. Один визит уже даёт результат. Для накопительного эффекта — классический массаж лица раз в 2–3 недели, чистка раз в месяц, лифтинговые техники курсом 4–5 процедур. Подскажу ритм под вашу задачу после первого визита.',
+  },
+  {
+    question: 'Что если мне не подойдёт — вернёте деньги?',
+    answer: 'Если после первой процедуры курса результат не устроил — верну стоимость оставшихся сеансов. По разовым процедурам — если что-то пошло не так, разберёмся по ситуации. Мне важно, чтобы вы вернулись — поэтому действую честно.',
+  },
+  {
+    question: 'Можно ли оплатить картой, Мир Pay или СБП?',
+    answer: 'Да, принимаю карты любых банков, СБП и наличные. Мир Pay — тоже. Уточните при записи, если есть предпочтения по способу оплаты.',
+  },
+]
+
 const serviceCategories = [
   {
     name: 'Массаж тела',
     slug: 'massage-body',
     minPrice: '1 500',
+    intro: 'От 30 минут до 2 часов. Подбираем интенсивность под вас — не всем нужно «поглубже».',
     items: [
       {
         title: 'Массаж спины',
@@ -243,6 +444,7 @@ const serviceCategories = [
     name: 'Массаж лица',
     slug: 'massage-face',
     minPrice: '1 100',
+    intro: 'Ручные техники без игл и реабилитации. Эффект виден сразу, стойкий — с третьего–пятого сеанса.',
     items: [
       {
         title: 'Классический массаж лица',
@@ -271,6 +473,7 @@ const serviceCategories = [
     name: 'Эстетическая косметология',
     slug: 'cosmetology',
     minPrice: '500',
+    intro: 'Когда кожа просит не только рук, но и активов. Подбираем под состояние кожи в день визита.',
     items: [
       {
         title: 'Ультразвуковая чистка + маска',

@@ -18,8 +18,7 @@
           <div class="flex items-start gap-4 flex-1 min-w-0">
             <UIcon name="i-lucide-cookie" class="w-4 h-4 text-mocha-600 shrink-0 mt-0.5" />
             <p class="text-xs text-mocha-400 font-light leading-relaxed">
-              Мы используем файлы cookie для корректной работы сайта.
-              Продолжая, вы соглашаетесь с их использованием согласно нашей
+              Сайт использует cookie для статистики и корректной работы. Подробнее — в
               <NuxtLink to="/privacy" class="text-mocha-300 underline underline-offset-2 hover:text-mocha-100 transition-colors">
                 Политике конфиденциальности
               </NuxtLink>.
@@ -32,13 +31,13 @@
               @click="decline"
               class="flex-1 sm:flex-none px-5 py-2 border border-mocha-800 text-mocha-500 hover:border-mocha-600 hover:text-mocha-300 transition-colors text-xs uppercase tracking-widest font-medium"
             >
-              Отклонить
+              Только необходимые
             </button>
             <button
               @click="accept"
               class="flex-1 sm:flex-none px-5 py-2 bg-mocha-200 text-mocha-950 hover:bg-mocha-100 transition-colors text-xs uppercase tracking-widest font-medium"
             >
-              Принять
+              Ок
             </button>
           </div>
 

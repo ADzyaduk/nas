@@ -32,13 +32,13 @@
           <div class="md:hidden flex items-center gap-4">
             <UButton to="/services" variant="link" color="neutral" label="Услуги" class="text-xs tracking-wide uppercase" />
             <UButton to="/about" variant="link" color="neutral" label="О нас" class="text-xs tracking-wide uppercase" />
-            <UButton
-              to="/contacts"
-              variant="outline"
-              color="neutral"
-              label="Записаться"
-              class="text-xs tracking-wide uppercase rounded-none border-mocha-700 text-mocha-200 hover:border-mocha-500 hover:text-mocha-100 hover:bg-transparent transition-colors px-3 py-1.5"
-            />
+            <a
+              href="tel:+79384880307"
+              class="text-xs tracking-wide uppercase rounded-none border border-mocha-700 text-mocha-200 hover:border-mocha-500 hover:text-mocha-100 transition-colors px-3 py-1.5 inline-flex items-center gap-1.5"
+            >
+              <UIcon name="i-lucide-phone" class="w-3 h-3" />
+              Позвонить
+            </a>
           </div>
         </div>
       </UContainer>
@@ -62,7 +62,7 @@
             <NuxtLink to="/" class="transition-opacity hover:opacity-70 inline-block mb-4">
               <NuxtImg src="/logo.png" alt="Кабинет Анастасии Дзядук" width="80" height="80" format="webp" class="h-10 w-auto" />
             </NuxtLink>
-            <p class="text-mocha-400 text-sm font-light mb-2 leading-relaxed">Эстетика естественной красоты</p>
+            <p class="text-mocha-400 text-sm font-light mb-2 leading-relaxed">Массаж лица и тела · Сочи, Макаренко 30А · ежедневно 10:00–22:00</p>
             <p class="text-mocha-600 text-xs font-light leading-relaxed">г. Сочи, ул. Макаренко, 30А<br />Ежедневно с 10:00 до 22:00</p>
           </div>
 
